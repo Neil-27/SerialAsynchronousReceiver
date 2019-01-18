@@ -1,0 +1,10 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity DemoTop is
+	port (
+		clk, ack, en, rst, send: in std_logic;
+		dry, err, rx: out std_logic;
+		OQ: out std_logic_vector(7 downto 0)
+	);
+end top;

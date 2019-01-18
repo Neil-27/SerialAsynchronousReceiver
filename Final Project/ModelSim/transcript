@@ -1,0 +1,50 @@
+# Loading project FinalProject
+# Compile of DataLatch.vhd was successful.
+# Compile of DerivedClock.vhd was successful.
+# Compile of DivBy11.vhd was successful.
+# Compile of FSM.vhd was successful.
+# Compile of ShiftRegister.vhd was successful.
+# Compile of testbench.vht was successful.
+# Compile of top.vhd was successful.
+# 7 compiles, 0 failed with no errors. 
+vsim work.receiver_tst
+# vsim work.receiver_tst 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.receiver_tst(receiver_arch)
+# Loading work.top(top_stru)
+# Loading ieee.numeric_std(body)
+# Loading work.fsm(fsmarch)
+# Loading work.divby11(divarch)
+# Loading work.shiftregister(srarch)
+# Loading work.datalatch(dlarch)
+# ** Warning: (vsim-8683) Uninitialized out port /receiver_tst/i1/L2/rxo has no driver.
+# This port will contribute value (U) to the signal network.
+add wave -r /*
+run -all
+quit -sim
+# Compile of DataLatch.vhd was successful.
+# Compile of DerivedClock.vhd was successful.
+# Compile of DivBy11.vhd was successful.
+# Compile of FSM.vhd was successful.
+# Compile of ShiftRegister.vhd was successful.
+# Compile of testbench.vht was successful.
+# Compile of top.vhd was successful.
+# 7 compiles, 0 failed with no errors. 
+vsim work.receiver_tst
+# vsim work.receiver_tst 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.receiver_tst(receiver_arch)
+# Loading work.top(top_stru)
+# Loading ieee.numeric_std(body)
+# Loading work.fsm(fsmarch)
+# Loading work.divby11(divarch)
+# Loading work.shiftregister(srarch)
+# Loading work.datalatch(dlarch)
+# ** Warning: (vsim-8683) Uninitialized out port /receiver_tst/i1/L2/rxo has no driver.
+# This port will contribute value (U) to the signal network.
+add wave -r /*
+run -all

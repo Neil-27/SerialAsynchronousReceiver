@@ -1,0 +1,48 @@
+entity DemoLayer is
+	port (
+		rstIn, enIn, ackIn, clkIn, send: std_logic;
+		packet: std_logic_vector(10 downto 0);
+		rstOut, enOut, ackOut, clkOut, bitOut: std_logic
+	);
+end entity;
+
+architecture DemoLayer_stru of DemoLayer is
+	signal sending: std_logic;
+begin
+	--passthrough of signals for demoLayer
+	rstOut <= rstIn;
+	enOut <= enIn;
+	ackOut <= ackIn;
+	clkOut <= clkIn;
+	
+	process(clkIn)
+	begin
+		if rising_edge(clkIn) then
+			if send = '1' then
+				sending <= '1';
+			end if;
+		end if;
+	end process;
+	
+	process(clkIn)
+		variable t: Integer := 0;
+		variable i: Integer := 0;
+	begin
+		if sending = '1' and rising_edge(clkIn) then
+			bitOut <= packet(i);
+			t := t + 1;
+			if t = 3 then
+				i := i + 1;
+				if i = 11 then
+					sending <= '0';
+				end if;
+				t := 0;
+			end if;
+		else
+			bitOut <= '0';
+			t := 0;
+			i := 0;
+		end if;
+	end process;
+end DemoLayer_stru;
+			

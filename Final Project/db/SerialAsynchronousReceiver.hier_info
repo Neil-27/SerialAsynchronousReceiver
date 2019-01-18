@@ -1,0 +1,138 @@
+|top
+clk => FSM:L0.clk
+ack => FSM:L0.ack
+en => FSM:L0.en
+rst => FSM:L0.rst
+rx => FSM:L0.st
+rx => ShiftRegister:L2.rx
+dry <= FSM:L0.dry
+err <= FSM:L0.err
+OQ[0] <= DataLatch:L3.OQ[0]
+OQ[1] <= DataLatch:L3.OQ[1]
+OQ[2] <= DataLatch:L3.OQ[2]
+OQ[3] <= DataLatch:L3.OQ[3]
+OQ[4] <= DataLatch:L3.OQ[4]
+OQ[5] <= DataLatch:L3.OQ[5]
+OQ[6] <= DataLatch:L3.OQ[6]
+OQ[7] <= DataLatch:L3.OQ[7]
+
+
+|top|FSM:L0
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => rxck~reg0.CLK
+clk => dlEn~reg0.CLK
+clk => CS~1.DATAIN
+ack => Selector2.IN5
+ack => Selector0.IN3
+ack => dataError.DATAB
+ack => Selector4.IN1
+en => process_1.IN0
+en => clkAdjust.DATAA
+en => process_2.IN0
+rst => dlEn~reg0.ACLR
+rst => process_2.IN1
+rst => CS~3.DATAIN
+ed => Selector4.IN3
+ed => pulse.DATAB
+ed => NS.s5.DATAB
+rxo => ~NO_FANOUT~
+rxf => clkAdjust.OUTPUTSELECT
+rxf => NS.s3.DATAB
+rxf => Selector3.IN2
+st => process_1.IN1
+pd <= pulse.DB_MAX_OUTPUT_PORT_TYPE
+dry <= dataReady.DB_MAX_OUTPUT_PORT_TYPE
+err <= dataError.DB_MAX_OUTPUT_PORT_TYPE
+rxck <= rxck~reg0.DB_MAX_OUTPUT_PORT_TYPE
+cdc <= Selector0.DB_MAX_OUTPUT_PORT_TYPE
+dlEn <= dlEn~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top|DivBy11:L1
+clk => rxf~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clr => rxf~reg0.ACLR
+clr => counter[0].ACLR
+clr => counter[1].ACLR
+clr => counter[2].ACLR
+clr => counter[3].ACLR
+rxf <= rxf~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top|shiftregister:L2
+clk => sr[0].CLK
+clk => sr[1].CLK
+clk => sr[2].CLK
+clk => sr[3].CLK
+clk => sr[4].CLK
+clk => sr[5].CLK
+clk => sr[6].CLK
+clk => sr[7].CLK
+clk => sr[8].CLK
+clk => sr[9].CLK
+clk => sr[10].CLK
+clr => sr[0].ACLR
+clr => sr[1].ACLR
+clr => sr[2].ACLR
+clr => sr[3].ACLR
+clr => sr[4].ACLR
+clr => sr[5].ACLR
+clr => sr[6].ACLR
+clr => sr[7].ACLR
+clr => sr[8].ACLR
+clr => sr[9].ACLR
+clr => sr[10].ACLR
+rx => sr[0].DATAIN
+rxo <= comb.DB_MAX_OUTPUT_PORT_TYPE
+QST <= sr[10].DB_MAX_OUTPUT_PORT_TYPE
+QSP[0] <= sr[0].DB_MAX_OUTPUT_PORT_TYPE
+QSP[1] <= sr[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[0] <= sr[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= sr[3].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= sr[4].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= sr[5].DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= sr[6].DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= sr[7].DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= sr[8].DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= sr[9].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top|DataLatch:L3
+clk => OQ[0]~reg0.CLK
+clk => OQ[1]~reg0.CLK
+clk => OQ[2]~reg0.CLK
+clk => OQ[3]~reg0.CLK
+clk => OQ[4]~reg0.CLK
+clk => OQ[5]~reg0.CLK
+clk => OQ[6]~reg0.CLK
+clk => OQ[7]~reg0.CLK
+en => OQ[0]~reg0.ACLR
+en => OQ[1]~reg0.ACLR
+en => OQ[2]~reg0.ACLR
+en => OQ[3]~reg0.ACLR
+en => OQ[4]~reg0.ACLR
+en => OQ[5]~reg0.ACLR
+en => OQ[6]~reg0.ACLR
+en => OQ[7]~reg0.ACLR
+D[0] => OQ[0]~reg0.DATAIN
+D[1] => OQ[1]~reg0.DATAIN
+D[2] => OQ[2]~reg0.DATAIN
+D[3] => OQ[3]~reg0.DATAIN
+D[4] => OQ[4]~reg0.DATAIN
+D[5] => OQ[5]~reg0.DATAIN
+D[6] => OQ[6]~reg0.DATAIN
+D[7] => OQ[7]~reg0.DATAIN
+OQ[0] <= OQ[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[1] <= OQ[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[2] <= OQ[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[3] <= OQ[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[4] <= OQ[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[5] <= OQ[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[6] <= OQ[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+OQ[7] <= OQ[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
